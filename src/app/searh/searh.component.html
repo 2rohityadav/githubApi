@@ -7,6 +7,18 @@
 
 <p>{{ searchCount }}</p>
 
-<ol *ngIf="searchResult">
-  <li *ngFor="let user of searchResult.items">{{user.login}}</li>
+<ol class="_userContainer" *ngIf="searchResult">
+  <li class="_userList" *ngFor="let user of searchResult.items">
+    <md-card class="example-card">
+    <md-card-header>
+      <div md-card-avatar class="example-header-image"></div>
+      <md-card-title>{{user.login}}</md-card-title>
+    </md-card-header>
+    <img md-card-image [src]="user.avatar_url">
+    <md-card-actions>
+      <button md-button>LIKE</button>
+      <button md-button>SHARE</button>
+    </md-card-actions>
+  </md-card>
+  </li>
 </ol>
