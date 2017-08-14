@@ -2,6 +2,11 @@
 <p>
   searh works!
 </p>
-<input type="text" name="" value="">
-<button (click)="getUser()">Search</button>
+<input (keyup)="onKey($event)">
+<button (click)="getUsersbtn()">Search</button>
 
+<p>{{ searchCount }}</p>
+
+<ol *ngIf="searchResult">
+  <li *ngFor="let user of searchResult.items">{{user.login}}</li>
+</ol>

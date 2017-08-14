@@ -9,13 +9,26 @@ import { GithubService } from '../github/github.service';
 })
 export class SearhComponent implements OnInit {
 
+  public searchText;
+  public searchCount;
+  public searchResult;
+
   constructor(private githubService: GithubService) { }
   ngOnInit() {
-    this.githubService.getUser();
+
   }
 
-  getUser() {
-    console.log('get user');
+  onKey(e: any) {
+    this.searchText = e.target.value;
+  }
+  getUsersbtn() {
+    this.githubService.getUserServ(this.searchText).subscribe(
+      res => {
+        console.log(res);
+        this.searchCount = res.total_count;
+        this.searchResult = res;
+      }
+    );
   }
 
 }
